@@ -10,4 +10,21 @@ public class Solutions {
         String reversed = new StringBuilder(cleansed).reverse().toString();
         return cleansed.equals(reversed);
     }
+
+    public boolean isSubsequence(String s, String t) {
+        int cursor = 0;
+        for (char letter : s.toCharArray()) {
+            int idxChar = t.indexOf(letter, cursor);
+            if (idxChar < 0){
+                return false; // can't find letter
+            } else {
+                if (idxChar >= cursor){
+                    cursor = idxChar; // found letter beyond current cursor
+                } else {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }
